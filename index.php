@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Laporan Praktikum | Yosep D. Tel</title>
     <link rel="stylesheet" href="assets/css/style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;800&display=swap" rel="stylesheet">
 </head>
 <body>
 
@@ -26,44 +26,52 @@
         </nav>
     </header>
 
-    <section id="home" class="hero container">
+    <section id="home" class="hero">
         
-        <div class="hero-text-side">
-            <h4 class="badge">Arsip Digital Praktikum</h4>
-            
-            <h1 class="main-title true-focus-container cursor-target">
-                <span class="focus-word active">Teknik</span> 
-                <span class="focus-word">Informatika</span>
-            </h1>
-            
-            <div class="profile-info">
-                <div class="info-item">
-                    <span>Mahasiswa</span>
-                    <p>Yosep Dominicke Telaumbanua</p>
-                </div>
-                <div class="info-item">
-                    <span>Universitas</span>
-                    <p>Universitas Katolik Santo Thomas</p>
-                </div>
-                <div class="info-item">
-                    <span>Mata Kuliah</span>
-                    <p>Praktikum Pemrograman Web</p>
-                </div>
-                <div class="info-item">
-                    <span>Dosen Pengampu</span>
-                    <p>Wasit Ginting, S.kom, M.Kom.</p>
-                </div>
-            </div>
-
-            <div class="hero-btns">
-                <a href="#laporan" class="btn-primary cursor-target">Lihat Laporan</a>
-            </div>
-        </div>
-
-        <div class="hero-3d-side">
+        <div class="hero-3d-center">
             <iframe src='https://my.spline.design/nexbotrobotcharacterconcept-mOSVa8HdEmrqmublDMR7JzWG/' frameborder='0'></iframe>
         </div>
 
+        <div class="hero-content container">
+            
+            <div class="title-wrapper">
+                <h4 class="badge">Arsip Digital Praktikum</h4>
+                <h1 class="main-title true-focus-container cursor-target">
+                    <span class="focus-word text-white active">Teknik</span> 
+                    <span class="focus-word text-purple">Informatika</span>
+                </h1>
+            </div>
+
+            <div class="info-wrapper">
+                
+                <div class="info-left">
+                    <div class="info-item">
+                        <span>Mahasiswa</span>
+                        <p>Yosep Dominicke Telaumbanua</p>
+                    </div>
+                    <div class="hero-btns">
+                        <a href="#laporan" class="btn-primary cursor-target">Lihat Laporan</a>
+                    </div>
+                </div>
+
+                <div class="info-right">
+                    <div class="info-item text-right">
+                        <span>Universitas</span>
+                        <p>Universitas Katolik Santo Thomas</p>
+                    </div>
+                    <div class="info-item text-right">
+                        <span>Mata Kuliah</span>
+                        <p>Praktikum Pemrograman Web</p>
+                    </div>
+                    <div class="info-item text-right">
+                        <span>Dosen Pengampu</span>
+                        <p>Wasit Ginting, S.kom, M.Kom.</p>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
     </section>
 
     <div class="custom-cursor-dot"></div>

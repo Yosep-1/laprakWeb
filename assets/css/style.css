@@ -1,12 +1,18 @@
+/* VARIABEL WARNA UTAMA */
 :root {
-    --bg-color: #030008; /* Hitam pekat keunguan */
+    --bg-color: #030008; /* Hitam pekat agak ungu */
     --text-primary: #ffffff;
     --text-secondary: #a0a0a0;
-    --accent-color: #A855F7; 
+    --accent-color: #A855F7; /* Ungu terang */
     --font-main: 'Plus Jakarta Sans', sans-serif;
 }
 
-* { margin: 0; padding: 0; box-sizing: border-box; }
+* { 
+    margin: 0; 
+    padding: 0; 
+    box-sizing: border-box; 
+}
+
 body {
     background-color: var(--bg-color);
     color: var(--text-primary);
@@ -14,11 +20,19 @@ body {
     overflow-x: hidden;
     cursor: none; /* Sembunyikan kursor bawaan Windows */
 }
-.container { max-width: 1300px; margin: 0 auto; padding: 0 2rem; }
 
-/* === 1. BACKGROUND GLOW & NOISE (Mirip ColorBends) === */
+.container { 
+    max-width: 1400px; /* Diperlebar agar layout kiri-kanan lebih lega */
+    margin: 0 auto; 
+    padding: 0 3rem; 
+}
+
+/* =========================================
+   1. BACKGROUND GLOW & NOISE (Ala ColorBends)
+   ========================================= */
 .bg-animated {
-    position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; z-index: -2;
+    position: fixed; 
+    top: 0; left: 0; width: 100vw; height: 100vh; z-index: -2;
     background: 
         radial-gradient(ellipse at 20% 40%, rgba(168, 85, 247, 0.4) 0%, transparent 50%),
         radial-gradient(ellipse at 80% 80%, rgba(82, 39, 255, 0.3) 0%, transparent 50%);
@@ -26,7 +40,8 @@ body {
     animation: moveFluids 12s infinite alternate ease-in-out;
 }
 .bg-noise {
-    position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; z-index: -1;
+    position: fixed; 
+    top: 0; left: 0; width: 100vw; height: 100vh; z-index: -1;
     opacity: 0.05;
     background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
     pointer-events: none;
@@ -36,49 +51,159 @@ body {
     100% { transform: scale(1.2) translate(-50px, 20px); }
 }
 
-/* === 2. HEADER === */
+/* =========================================
+   2. HEADER & NAVIGASI
+   ========================================= */
 header {
-    padding: 1.5rem 0; position: fixed; width: 100%; top: 0; z-index: 100;
+    padding: 1.5rem 0; 
+    position: fixed; 
+    width: 100%; 
+    top: 0; 
+    z-index: 100;
     background: rgba(3, 0, 8, 0.5);
-    -webkit-backdrop-filter: blur(20px); backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px); 
+    backdrop-filter: blur(20px);
     border-bottom: 1px solid rgba(255,255,255,0.05);
 }
-nav { display: flex; justify-content: space-between; align-items: center; }
-.logo img { height: 45px; width: auto; object-fit: contain; }
-.nav-links { display: flex; list-style: none; gap: 2.5rem; }
-.nav-links a { text-decoration: none; color: var(--text-secondary); font-weight: 600; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 1px; transition: 0.3s; }
-.nav-links a:hover { color: var(--text-primary); }
+nav { 
+    display: flex; justify-content: space-between; align-items: center; 
+}
+.logo img { 
+    height: 45px; width: auto; object-fit: contain; 
+}
+.nav-links { 
+    display: flex; list-style: none; gap: 2.5rem; 
+}
+.nav-links a { 
+    text-decoration: none; color: var(--text-secondary); font-weight: 600; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 1px; transition: 0.3s; 
+}
+.nav-links a:hover { 
+    color: var(--text-primary); 
+}
 
-/* === 3. HERO & LAYOUT === */
-.hero { height: 100vh; display: flex; align-items: center; justify-content: space-between; padding-top: 80px; }
-.hero-text-side { flex: 1; max-width: 600px; z-index: 2; }
-.hero-3d-side {
-    flex: 1; height: 100%; display: flex; align-items: center; justify-content: flex-end;
-    overflow: hidden; /* Penting untuk menyembunyikan logo Spline */
+/* =========================================
+   3. HERO LAYOUT (MONOLITH STYLE)
+   ========================================= */
+.hero { 
     position: relative;
-}
-/* Trik Menyembunyikan Logo Spline */
-.hero-3d-side iframe {
-    width: 120%; height: 120%; 
-    transform: scale(1.15) translate(5%, 5%); /* Diperbesar agar logo di pojok terdorong keluar batas */
-    pointer-events: auto;
+    height: 100vh; 
+    width: 100vw;
+    display: flex;
+    justify-content: center;
 }
 
-.badge { color: var(--accent-color); text-transform: uppercase; letter-spacing: 3px; font-size: 0.8rem; margin-bottom: 1rem; }
+/* Robot 3D Absolute di Tengah Layar */
+.hero-3d-center {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100vw;
+    height: 100vh;
+    z-index: 1;
+    pointer-events: auto; /* Bisa diputar pakai mouse */
+    overflow: hidden; /* Sembunyikan tumpahan Spline Logo */
+}
+/* Trik membesarkan iframe agar logo Spline keluar dari layar */
+.hero-3d-center iframe {
+    width: 110%; 
+    height: 110%;
+    transform: translate(-5%, -5%);
+}
 
-/* === 4. TRUE FOCUS === */
-.true-focus-container { font-size: 5.5rem; font-weight: 800; line-height: 1.1; margin-bottom: 2.5rem; display: flex; gap: 15px; flex-wrap: wrap; }
-.focus-word { transition: filter 0.4s ease, color 0.4s ease; filter: blur(8px); color: var(--text-secondary); }
-.focus-word:hover, .focus-word.active { filter: blur(0px); color: var(--text-primary); text-shadow: 0 0 20px rgba(168, 85, 247, 0.4); }
+/* Bungkusan Konten Teks */
+.hero-content {
+    position: relative;
+    z-index: 2; /* Harus di atas Robot 3D */
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding-top: 130px; /* Jarak dari bawah header */
+    padding-bottom: 4rem; /* Jarak dari bawah layar */
+    pointer-events: none; /* Klik tembus ke 3D */
+}
 
-/* === 5. INFO & BUTTON === */
-.profile-info { display: grid; grid-template-columns: repeat(2, 1fr); gap: 2rem; margin-bottom: 3rem; }
-.info-item span { display: block; color: var(--text-secondary); font-size: 0.75rem; text-transform: uppercase; margin-bottom: 0.2rem; letter-spacing: 1px; }
-.info-item p { font-weight: 600; font-size: 1.1rem; }
-.btn-primary { padding: 1rem 2.5rem; background-color: var(--text-primary); color: var(--bg-color); text-decoration: none; border-radius: 50px; font-weight: 700; transition: 0.3s; display: inline-block;}
-.btn-primary:hover { background-color: var(--accent-color); color: white; box-shadow: 0 0 20px rgba(168, 85, 247, 0.5); }
+/* =========================================
+   4. TULISAN BESAR (TRUE FOCUS CSS)
+   ========================================= */
+.title-wrapper {
+    text-align: center;
+    pointer-events: auto; 
+}
+.badge { 
+    color: var(--accent-color); text-transform: uppercase; letter-spacing: 5px; font-size: 0.9rem; margin-bottom: 1rem; 
+}
 
-/* === 6. CUSTOM ANIMATED CURSOR === */
+.true-focus-container { 
+    font-size: 7rem; /* Dibuat besar mirip Monolith */
+    font-weight: 800; 
+    line-height: 1; 
+    display: flex; 
+    justify-content: center; 
+    gap: 20px; 
+    flex-wrap: wrap; 
+}
+
+.focus-word { 
+    transition: filter 0.4s ease, color 0.4s ease, text-shadow 0.4s ease; 
+    filter: blur(10px); 
+    cursor: pointer;
+}
+.text-white { color: rgba(255, 255, 255, 0.3); } 
+.text-purple { color: rgba(168, 85, 247, 0.3); }
+
+/* Hover & Active States */
+.focus-word.text-white.active, .focus-word.text-white:hover { 
+    filter: blur(0px); color: #ffffff; text-shadow: 0 0 20px rgba(255, 255, 255, 0.6); 
+}
+.focus-word.text-purple.active, .focus-word.text-purple:hover { 
+    filter: blur(0px); color: var(--accent-color); text-shadow: 0 0 20px rgba(168, 85, 247, 0.6); 
+}
+
+/* =========================================
+   5. INFO BOX (KIRI & KANAN BAWAH)
+   ========================================= */
+.info-wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    width: 100%;
+    pointer-events: none; /* Klik tembus ke 3D */
+}
+
+/* Desain Kotak Glassmorphism */
+.info-left, .info-right {
+    pointer-events: auto; /* Box bisa diklik/disorot */
+    background: rgba(3, 0, 8, 0.3); 
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+    padding: 1.5rem 2rem;
+    border-radius: 20px;
+    border: 1px solid rgba(255,255,255,0.08);
+}
+.info-item { margin-bottom: 1.2rem; }
+.info-item:last-child { margin-bottom: 0; }
+.info-item span { 
+    display: block; color: var(--text-secondary); font-size: 0.75rem; text-transform: uppercase; margin-bottom: 0.3rem; letter-spacing: 1px; 
+}
+.info-item p { 
+    font-weight: 600; font-size: 1.1rem; color: #fff; 
+}
+.text-right { text-align: right; }
+
+.hero-btns { margin-top: 2rem; }
+.btn-primary { 
+    padding: 1rem 2.5rem; background-color: var(--text-primary); color: var(--bg-color); text-decoration: none; border-radius: 50px; font-weight: 700; transition: 0.3s; display: inline-block;
+}
+.btn-primary:hover { 
+    background-color: var(--accent-color); color: white; box-shadow: 0 0 20px rgba(168, 85, 247, 0.5); 
+}
+
+/* =========================================
+   6. CUSTOM ANIMATED CURSOR
+   ========================================= */
 .custom-cursor-dot {
     width: 6px; height: 6px; background-color: white; border-radius: 50%;
     position: fixed; top: 0; left: 0; pointer-events: none; z-index: 9999;
@@ -87,9 +212,10 @@ nav { display: flex; justify-content: space-between; align-items: center; }
 .custom-cursor-outline {
     width: 40px; height: 40px; border: 2px solid rgba(168, 85, 247, 0.8); border-radius: 50%;
     position: fixed; top: 0; left: 0; pointer-events: none; z-index: 9998;
-    transform: translate(-50%, -50%); transition: 0.15s ease-out;
+    transform: translate(-50%, -50%); transition: width 0.2s, height 0.2s, background-color 0.2s;
+    /* Efek transisi smooth saat mouse bergerak lambat */
+    transition-timing-function: ease-out;
 }
-/* Efek saat kursor mengenai target (Hover State) */
 .custom-cursor-outline.hovered {
     width: 60px; height: 60px; background-color: rgba(168, 85, 247, 0.1); border-color: transparent;
 }
