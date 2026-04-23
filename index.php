@@ -9,21 +9,32 @@
 </head>
 <body>
 
+    <div class="bg-animated"></div>
+
     <header>
         <nav class="container">
-            <div class="logo">&lt;Yosep.Dev/&gt;</div>
+            <div class="logo">
+                <img src="assets/images/logo-ydt.png" alt="YDT Logo">
+            </div>
+            
             <ul class="nav-links">
                 <li><a href="#home">Home</a></li>
                 <li><a href="#laporan">Laporan</a></li>
-                <li><a href="admin/login.php" class="btn-admin">Admin Portal</a></li>
+                <li><a href="#contact">Contact</a></li>
+                <li><a href="admin/login.php" class="btn-nav">Admin Portal</a></li>
             </ul>
         </nav>
     </header>
 
     <section id="home" class="hero container">
-        <div class="hero-content">
+        
+        <div class="hero-text-side">
             <h4 class="badge">Arsip Digital Praktikum</h4>
-            <h1 class="main-title">Teknik <span class="text-gradient">Informatika</span></h1>
+            
+            <h1 class="main-title true-focus-container">
+                <span class="focus-word active">Teknik</span> 
+                <span class="focus-word">Informatika</span>
+            </h1>
             
             <div class="profile-info">
                 <div class="info-item">
@@ -36,10 +47,11 @@
                 </div>
                 <div class="info-item">
                     <span>Mata Kuliah</span>
-                    <p>Praktikum Pemrograman Web</p> </div>
+                    <p>Praktikum Pemrograman Web</p>
+                </div>
                 <div class="info-item">
                     <span>Dosen Pengampu</span>
-                    <p>Nama Dosen Anda, S.T., M.Kom.</p>
+                    <p>Wasit Ginting, S.kom, M.Kom.</p>
                 </div>
             </div>
 
@@ -49,9 +61,10 @@
             </div>
         </div>
 
-        <div class="hero-visual">
-            <div class="circle-gradient"></div>
+        <div class="hero-3d-side">
+            <iframe src='https://my.spline.design/nexbotrobotcharacterconcept-mOSVa8HdEmrqmublDMR7JzWG/' frameborder='0' width='100%' height='100%'></iframe>
         </div>
+
     </section>
 
     <script src="assets/js/script.js"></script>

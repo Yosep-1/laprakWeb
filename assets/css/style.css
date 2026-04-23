@@ -1,9 +1,8 @@
 :root {
-    --bg-color: #0a0a0a;
-    --card-bg: #161616;
+    --bg-color: #050505; /* Lebih pekat agar 3D terlihat menonjol */
     --text-primary: #ffffff;
     --text-secondary: #a0a0a0;
-    --accent-color: #3b82f6; /* Biru Modern */
+    --accent-color: #A855F7; /* Warna ungu sesuai tema referensi */
     --font-main: 'Plus Jakarta Sans', sans-serif;
 }
 
@@ -22,21 +21,44 @@ body {
 }
 
 .container {
-    max-width: 1200px;
+    max-width: 1300px;
     margin: 0 auto;
     padding: 0 2rem;
 }
 
-/* HEADER */
+/* =========================================
+   ANIMATED BACKGROUND (Pengganti ColorBends) 
+   ========================================= */
+.bg-animated {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: -1;
+    background: radial-gradient(circle at 15% 50%, rgba(168, 85, 247, 0.15), transparent 50%),
+                radial-gradient(circle at 85% 30%, rgba(82, 39, 255, 0.1), transparent 50%);
+    animation: pulseBg 10s infinite alternate ease-in-out;
+}
+
+@keyframes pulseBg {
+    0% { transform: scale(1); opacity: 0.8; }
+    100% { transform: scale(1.2); opacity: 1; }
+}
+
+/* =========================================
+   HEADER & LOGO 
+   ========================================= */
 header {
     padding: 1.5rem 0;
     position: fixed;
     width: 100%;
     top: 0;
     z-index: 100;
-    background: rgba(10, 10, 10, 0.8);
-    -webkit-backdrop-filter: blur(10px);
-    backdrop-filter: blur(10px);
+    background: rgba(5, 5, 5, 0.8);
+    -webkit-backdrop-filter: blur(15px);
+    backdrop-filter: blur(15px);
+    border-bottom: 1px solid rgba(255,255,255,0.05);
 }
 
 nav {
@@ -45,23 +67,25 @@ nav {
     align-items: center;
 }
 
-.logo {
-    font-weight: 800;
-    font-size: 1.2rem;
-    letter-spacing: 1px;
+.logo img {
+    height: 50px; /* Sesuaikan ukuran logo YDT */
+    width: auto;
 }
 
 .nav-links {
     display: flex;
     list-style: none;
-    gap: 2rem;
+    gap: 2.5rem;
     align-items: center;
 }
 
 .nav-links a {
     text-decoration: none;
     color: var(--text-secondary);
-    font-weight: 500;
+    font-weight: 600;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
     transition: 0.3s;
 }
 
@@ -69,12 +93,33 @@ nav {
     color: var(--text-primary);
 }
 
-/* HERO SECTION */
+/* =========================================
+   HERO LAYOUT (Kiri Teks, Kanan 3D) 
+   ========================================= */
 .hero {
     height: 100vh;
     display: flex;
     align-items: center;
+    justify-content: space-between;
     padding-top: 80px;
+    gap: 2rem;
+}
+
+.hero-text-side {
+    flex: 1;
+    max-width: 600px;
+    z-index: 2;
+}
+
+.hero-3d-side {
+    flex: 1;
+    height: 80%;
+    width: 100%;
+    z-index: 1;
+    display: flex;
+    justify-content: flex-end;
+    -webkit-mask-image: radial-gradient(circle, black 70%, transparent 100%); 
+    mask-image: radial-gradient(circle, black 70%, transparent 100%);
 }
 
 .badge {
@@ -85,26 +130,42 @@ nav {
     margin-bottom: 1rem;
 }
 
-.main-title {
+/* =========================================
+   TRUE FOCUS EFFECT (Vanilla CSS)
+   ========================================= */
+.true-focus-container {
     font-size: 5rem;
     font-weight: 800;
     line-height: 1.1;
     margin-bottom: 2.5rem;
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
 }
 
-.text-gradient {
-    background: linear-gradient(90deg, #3b82f6, #9333ea);
-    -webkit-background-clip: text;
-    background-clip: text;
-    -webkit-text-fill-color: transparent;
+.focus-word {
+    transition: filter 0.4s ease, color 0.4s ease;
+    filter: blur(8px); /* Default blur */
+    color: var(--text-secondary);
+    cursor: pointer;
 }
 
+/* Efek saat dihover atau diberi class active via JS */
+.focus-word:hover, 
+.focus-word.active {
+    filter: blur(0px);
+    color: var(--text-primary);
+    text-shadow: 0 0 20px rgba(168, 85, 247, 0.4);
+}
+
+/* =========================================
+   PROFILE INFO & BUTTONS
+   ========================================= */
 .profile-info {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 2rem;
     margin-bottom: 3rem;
-    max-width: 600px;
 }
 
 .info-item span {
@@ -113,6 +174,7 @@ nav {
     font-size: 0.75rem;
     text-transform: uppercase;
     margin-bottom: 0.2rem;
+    letter-spacing: 1px;
 }
 
 .info-item p {
@@ -120,7 +182,6 @@ nav {
     font-size: 1.1rem;
 }
 
-/* BUTTONS */
 .btn-primary {
     padding: 1rem 2.5rem;
     background-color: var(--text-primary);
@@ -132,6 +193,12 @@ nav {
     transition: 0.3s;
 }
 
+.btn-primary:hover {
+    background-color: var(--accent-color);
+    color: white;
+    box-shadow: 0 0 20px rgba(168, 85, 247, 0.5);
+}
+
 .btn-outline {
     padding: 1rem 2.5rem;
     border: 1px solid #333;
@@ -139,4 +206,9 @@ nav {
     text-decoration: none;
     border-radius: 50px;
     font-weight: 600;
+    transition: 0.3s;
+}
+
+.btn-outline:hover {
+    border-color: var(--text-primary);
 }
