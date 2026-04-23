@@ -1,214 +1,95 @@
 :root {
-    --bg-color: #050505; /* Lebih pekat agar 3D terlihat menonjol */
+    --bg-color: #030008; /* Hitam pekat keunguan */
     --text-primary: #ffffff;
     --text-secondary: #a0a0a0;
-    --accent-color: #A855F7; /* Warna ungu sesuai tema referensi */
+    --accent-color: #A855F7; 
     --font-main: 'Plus Jakarta Sans', sans-serif;
 }
 
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
+* { margin: 0; padding: 0; box-sizing: border-box; }
 body {
     background-color: var(--bg-color);
     color: var(--text-primary);
     font-family: var(--font-main);
-    line-height: 1.6;
     overflow-x: hidden;
+    cursor: none; /* Sembunyikan kursor bawaan Windows */
 }
+.container { max-width: 1300px; margin: 0 auto; padding: 0 2rem; }
 
-.container {
-    max-width: 1300px;
-    margin: 0 auto;
-    padding: 0 2rem;
-}
-
-/* =========================================
-   ANIMATED BACKGROUND (Pengganti ColorBends) 
-   ========================================= */
+/* === 1. BACKGROUND GLOW & NOISE (Mirip ColorBends) === */
 .bg-animated {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    z-index: -1;
-    background: radial-gradient(circle at 15% 50%, rgba(168, 85, 247, 0.15), transparent 50%),
-                radial-gradient(circle at 85% 30%, rgba(82, 39, 255, 0.1), transparent 50%);
-    animation: pulseBg 10s infinite alternate ease-in-out;
+    position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; z-index: -2;
+    background: 
+        radial-gradient(ellipse at 20% 40%, rgba(168, 85, 247, 0.4) 0%, transparent 50%),
+        radial-gradient(ellipse at 80% 80%, rgba(82, 39, 255, 0.3) 0%, transparent 50%);
+    filter: blur(60px);
+    animation: moveFluids 12s infinite alternate ease-in-out;
+}
+.bg-noise {
+    position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; z-index: -1;
+    opacity: 0.05;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+    pointer-events: none;
+}
+@keyframes moveFluids {
+    0% { transform: scale(1) translate(0, 0); }
+    100% { transform: scale(1.2) translate(-50px, 20px); }
 }
 
-@keyframes pulseBg {
-    0% { transform: scale(1); opacity: 0.8; }
-    100% { transform: scale(1.2); opacity: 1; }
-}
-
-/* =========================================
-   HEADER & LOGO 
-   ========================================= */
+/* === 2. HEADER === */
 header {
-    padding: 1.5rem 0;
-    position: fixed;
-    width: 100%;
-    top: 0;
-    z-index: 100;
-    background: rgba(5, 5, 5, 0.8);
-    -webkit-backdrop-filter: blur(15px);
-    backdrop-filter: blur(15px);
+    padding: 1.5rem 0; position: fixed; width: 100%; top: 0; z-index: 100;
+    background: rgba(3, 0, 8, 0.5);
+    -webkit-backdrop-filter: blur(20px); backdrop-filter: blur(20px);
     border-bottom: 1px solid rgba(255,255,255,0.05);
 }
+nav { display: flex; justify-content: space-between; align-items: center; }
+.logo img { height: 45px; width: auto; object-fit: contain; }
+.nav-links { display: flex; list-style: none; gap: 2.5rem; }
+.nav-links a { text-decoration: none; color: var(--text-secondary); font-weight: 600; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 1px; transition: 0.3s; }
+.nav-links a:hover { color: var(--text-primary); }
 
-nav {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.logo img {
-    height: 50px; /* Sesuaikan ukuran logo YDT */
-    width: auto;
-}
-
-.nav-links {
-    display: flex;
-    list-style: none;
-    gap: 2.5rem;
-    align-items: center;
-}
-
-.nav-links a {
-    text-decoration: none;
-    color: var(--text-secondary);
-    font-weight: 600;
-    font-size: 0.9rem;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    transition: 0.3s;
-}
-
-.nav-links a:hover {
-    color: var(--text-primary);
-}
-
-/* =========================================
-   HERO LAYOUT (Kiri Teks, Kanan 3D) 
-   ========================================= */
-.hero {
-    height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding-top: 80px;
-    gap: 2rem;
-}
-
-.hero-text-side {
-    flex: 1;
-    max-width: 600px;
-    z-index: 2;
-}
-
+/* === 3. HERO & LAYOUT === */
+.hero { height: 100vh; display: flex; align-items: center; justify-content: space-between; padding-top: 80px; }
+.hero-text-side { flex: 1; max-width: 600px; z-index: 2; }
 .hero-3d-side {
-    flex: 1;
-    height: 80%;
-    width: 100%;
-    z-index: 1;
-    display: flex;
-    justify-content: flex-end;
-    -webkit-mask-image: radial-gradient(circle, black 70%, transparent 100%); 
-    mask-image: radial-gradient(circle, black 70%, transparent 100%);
+    flex: 1; height: 100%; display: flex; align-items: center; justify-content: flex-end;
+    overflow: hidden; /* Penting untuk menyembunyikan logo Spline */
+    position: relative;
+}
+/* Trik Menyembunyikan Logo Spline */
+.hero-3d-side iframe {
+    width: 120%; height: 120%; 
+    transform: scale(1.15) translate(5%, 5%); /* Diperbesar agar logo di pojok terdorong keluar batas */
+    pointer-events: auto;
 }
 
-.badge {
-    color: var(--accent-color);
-    text-transform: uppercase;
-    letter-spacing: 3px;
-    font-size: 0.8rem;
-    margin-bottom: 1rem;
-}
+.badge { color: var(--accent-color); text-transform: uppercase; letter-spacing: 3px; font-size: 0.8rem; margin-bottom: 1rem; }
 
-/* =========================================
-   TRUE FOCUS EFFECT (Vanilla CSS)
-   ========================================= */
-.true-focus-container {
-    font-size: 5rem;
-    font-weight: 800;
-    line-height: 1.1;
-    margin-bottom: 2.5rem;
-    display: flex;
-    gap: 15px;
-    flex-wrap: wrap;
-}
+/* === 4. TRUE FOCUS === */
+.true-focus-container { font-size: 5.5rem; font-weight: 800; line-height: 1.1; margin-bottom: 2.5rem; display: flex; gap: 15px; flex-wrap: wrap; }
+.focus-word { transition: filter 0.4s ease, color 0.4s ease; filter: blur(8px); color: var(--text-secondary); }
+.focus-word:hover, .focus-word.active { filter: blur(0px); color: var(--text-primary); text-shadow: 0 0 20px rgba(168, 85, 247, 0.4); }
 
-.focus-word {
-    transition: filter 0.4s ease, color 0.4s ease;
-    filter: blur(8px); /* Default blur */
-    color: var(--text-secondary);
-    cursor: pointer;
-}
+/* === 5. INFO & BUTTON === */
+.profile-info { display: grid; grid-template-columns: repeat(2, 1fr); gap: 2rem; margin-bottom: 3rem; }
+.info-item span { display: block; color: var(--text-secondary); font-size: 0.75rem; text-transform: uppercase; margin-bottom: 0.2rem; letter-spacing: 1px; }
+.info-item p { font-weight: 600; font-size: 1.1rem; }
+.btn-primary { padding: 1rem 2.5rem; background-color: var(--text-primary); color: var(--bg-color); text-decoration: none; border-radius: 50px; font-weight: 700; transition: 0.3s; display: inline-block;}
+.btn-primary:hover { background-color: var(--accent-color); color: white; box-shadow: 0 0 20px rgba(168, 85, 247, 0.5); }
 
-/* Efek saat dihover atau diberi class active via JS */
-.focus-word:hover, 
-.focus-word.active {
-    filter: blur(0px);
-    color: var(--text-primary);
-    text-shadow: 0 0 20px rgba(168, 85, 247, 0.4);
+/* === 6. CUSTOM ANIMATED CURSOR === */
+.custom-cursor-dot {
+    width: 6px; height: 6px; background-color: white; border-radius: 50%;
+    position: fixed; top: 0; left: 0; pointer-events: none; z-index: 9999;
+    transform: translate(-50%, -50%); transition: width 0.2s, height 0.2s;
 }
-
-/* =========================================
-   PROFILE INFO & BUTTONS
-   ========================================= */
-.profile-info {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 2rem;
-    margin-bottom: 3rem;
+.custom-cursor-outline {
+    width: 40px; height: 40px; border: 2px solid rgba(168, 85, 247, 0.8); border-radius: 50%;
+    position: fixed; top: 0; left: 0; pointer-events: none; z-index: 9998;
+    transform: translate(-50%, -50%); transition: 0.15s ease-out;
 }
-
-.info-item span {
-    display: block;
-    color: var(--text-secondary);
-    font-size: 0.75rem;
-    text-transform: uppercase;
-    margin-bottom: 0.2rem;
-    letter-spacing: 1px;
-}
-
-.info-item p {
-    font-weight: 600;
-    font-size: 1.1rem;
-}
-
-.btn-primary {
-    padding: 1rem 2.5rem;
-    background-color: var(--text-primary);
-    color: var(--bg-color);
-    text-decoration: none;
-    border-radius: 50px;
-    font-weight: 700;
-    margin-right: 1rem;
-    transition: 0.3s;
-}
-
-.btn-primary:hover {
-    background-color: var(--accent-color);
-    color: white;
-    box-shadow: 0 0 20px rgba(168, 85, 247, 0.5);
-}
-
-.btn-outline {
-    padding: 1rem 2.5rem;
-    border: 1px solid #333;
-    color: var(--text-primary);
-    text-decoration: none;
-    border-radius: 50px;
-    font-weight: 600;
-    transition: 0.3s;
-}
-
-.btn-outline:hover {
-    border-color: var(--text-primary);
+/* Efek saat kursor mengenai target (Hover State) */
+.custom-cursor-outline.hovered {
+    width: 60px; height: 60px; background-color: rgba(168, 85, 247, 0.1); border-color: transparent;
 }

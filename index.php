@@ -10,18 +10,18 @@
 <body>
 
     <div class="bg-animated"></div>
+    <div class="bg-noise"></div>
 
     <header>
         <nav class="container">
             <div class="logo">
-                <img src="assets/images/logo-ydt.png" alt="YDT Logo">
+                <img src="assets/content/img/logo-ydt.png.png" alt="YDT Logo">
             </div>
             
             <ul class="nav-links">
-                <li><a href="#home">Home</a></li>
-                <li><a href="#laporan">Laporan</a></li>
-                <li><a href="#contact">Contact</a></li>
-                <li><a href="admin/login.php" class="btn-nav">Admin Portal</a></li>
+                <li><a href="#home" class="cursor-target">Home</a></li>
+                <li><a href="#laporan" class="cursor-target">Laporan</a></li>
+                <li><a href="#contact" class="cursor-target">Contact</a></li>
             </ul>
         </nav>
     </header>
@@ -31,7 +31,7 @@
         <div class="hero-text-side">
             <h4 class="badge">Arsip Digital Praktikum</h4>
             
-            <h1 class="main-title true-focus-container">
+            <h1 class="main-title true-focus-container cursor-target">
                 <span class="focus-word active">Teknik</span> 
                 <span class="focus-word">Informatika</span>
             </h1>
@@ -56,16 +56,18 @@
             </div>
 
             <div class="hero-btns">
-                <a href="#laporan" class="btn-primary">Lihat Laporan</a>
-                <a href="#kontak" class="btn-outline">Hubungi Saya</a>
+                <a href="#laporan" class="btn-primary cursor-target">Lihat Laporan</a>
             </div>
         </div>
 
         <div class="hero-3d-side">
-            <iframe src='https://my.spline.design/nexbotrobotcharacterconcept-mOSVa8HdEmrqmublDMR7JzWG/' frameborder='0' width='100%' height='100%'></iframe>
+            <iframe src='https://my.spline.design/nexbotrobotcharacterconcept-mOSVa8HdEmrqmublDMR7JzWG/' frameborder='0'></iframe>
         </div>
 
     </section>
+
+    <div class="custom-cursor-dot"></div>
+    <div class="custom-cursor-outline"></div>
 
     <script src="assets/js/script.js"></script>
 </body>
