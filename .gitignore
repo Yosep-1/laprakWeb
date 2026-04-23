@@ -1,0 +1,4 @@
+# file untuk keamanan GitHub
+
+# mengabaikan file kunci API 
+config/keys.php
