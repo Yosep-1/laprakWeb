@@ -1,4 +1,5 @@
 # file untuk keamanan GitHub
 
-# mengabaikan file kunci API 
-config/keys.php
+# menyembunyikan pdf  dan gambar
+content/pdf
+content/img

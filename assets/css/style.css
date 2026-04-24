@@ -1,48 +1,34 @@
 /* VARIABEL WARNA UTAMA */
 :root {
-    --bg-color: #030008; /* Hitam pekat agak ungu */
+    --bg-color: #030008; 
     --text-primary: #ffffff;
     --text-secondary: #a0a0a0;
-    --accent-color: #A855F7; /* Ungu terang */
+    --accent-color: #A855F7; 
     --font-main: 'Plus Jakarta Sans', sans-serif;
 }
 
-* { 
-    margin: 0; 
-    padding: 0; 
-    box-sizing: border-box; 
-}
+* { margin: 0; padding: 0; box-sizing: border-box; }
 
 body {
     background-color: var(--bg-color);
     color: var(--text-primary);
     font-family: var(--font-main);
     overflow-x: hidden;
-    cursor: none; /* Sembunyikan kursor bawaan Windows */
+    cursor: none; 
 }
 
-.container { 
-    max-width: 1400px; /* Diperlebar agar layout kiri-kanan lebih lega */
-    margin: 0 auto; 
-    padding: 0 3rem; 
-}
+.container { max-width: 1400px; margin: 0 auto; padding: 0 3rem; }
 
-/* =========================================
-   1. BACKGROUND GLOW & NOISE (Ala ColorBends)
-   ========================================= */
+/* === 1. BACKGROUND GLOW & NOISE === */
 .bg-animated {
-    position: fixed; 
-    top: 0; left: 0; width: 100vw; height: 100vh; z-index: -2;
-    background: 
-        radial-gradient(ellipse at 20% 40%, rgba(168, 85, 247, 0.4) 0%, transparent 50%),
-        radial-gradient(ellipse at 80% 80%, rgba(82, 39, 255, 0.3) 0%, transparent 50%);
+    position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; z-index: -2;
+    background: radial-gradient(ellipse at 20% 40%, rgba(168, 85, 247, 0.4) 0%, transparent 50%),
+                radial-gradient(ellipse at 80% 80%, rgba(82, 39, 255, 0.3) 0%, transparent 50%);
     filter: blur(60px);
     animation: moveFluids 12s infinite alternate ease-in-out;
 }
 .bg-noise {
-    position: fixed; 
-    top: 0; left: 0; width: 100vw; height: 100vh; z-index: -1;
-    opacity: 0.05;
+    position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; z-index: -1; opacity: 0.05;
     background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
     pointer-events: none;
 }
@@ -51,159 +37,76 @@ body {
     100% { transform: scale(1.2) translate(-50px, 20px); }
 }
 
-/* =========================================
-   2. HEADER & NAVIGASI
-   ========================================= */
+/* === 2. HEADER === */
 header {
-    padding: 1.5rem 0; 
-    position: fixed; 
-    width: 100%; 
-    top: 0; 
-    z-index: 100;
+    padding: 1.5rem 0; position: fixed; width: 100%; top: 0; z-index: 100;
     background: rgba(3, 0, 8, 0.5);
-    -webkit-backdrop-filter: blur(20px); 
-    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px); backdrop-filter: blur(20px);
     border-bottom: 1px solid rgba(255,255,255,0.05);
 }
-nav { 
-    display: flex; justify-content: space-between; align-items: center; 
-}
-.logo img { 
-    height: 45px; width: auto; object-fit: contain; 
-}
-.nav-links { 
-    display: flex; list-style: none; gap: 2.5rem; 
-}
-.nav-links a { 
-    text-decoration: none; color: var(--text-secondary); font-weight: 600; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 1px; transition: 0.3s; 
-}
-.nav-links a:hover { 
-    color: var(--text-primary); 
-}
+nav { display: flex; justify-content: space-between; align-items: center; }
+.logo img { height: 45px; width: auto; object-fit: contain; }
+.nav-links { display: flex; list-style: none; gap: 2.5rem; }
+.nav-links a { text-decoration: none; color: var(--text-secondary); font-weight: 600; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 1px; transition: 0.3s; }
+.nav-links a:hover { color: var(--text-primary); }
 
-/* =========================================
-   3. HERO LAYOUT (MONOLITH STYLE)
-   ========================================= */
+/* === 3. HERO LAYOUT === */
 .hero { 
-    position: relative;
-    height: 100vh; 
-    width: 100vw;
-    display: flex;
-    justify-content: center;
+    position: relative; height: 100vh; width: 100vw; display: flex; justify-content: center;
 }
 
-/* Robot 3D Absolute di Tengah Layar */
+/* Robot 3D (Z-INDEX 5: Di tengah-tengah lapisan) */
 .hero-3d-center {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 100vw;
-    height: 100vh;
-    z-index: 1;
-    pointer-events: auto; /* Bisa diputar pakai mouse */
-    overflow: hidden; /* Sembunyikan tumpahan Spline Logo */
+    position: absolute; top: 55%; left: 50%; transform: translate(-50%, -50%);
+    width: 100vw; height: 100vh;
+    z-index: 5; /* Angka ini menentukan dia di depan judul, tapi di belakang tombol */
+    pointer-events: auto; overflow: hidden; 
 }
-/* Trik membesarkan iframe agar logo Spline keluar dari layar */
-.hero-3d-center iframe {
-    width: 110%; 
-    height: 110%;
-    transform: translate(-5%, -5%);
-}
+.hero-3d-center iframe { width: 110%; height: 110%; transform: translate(-5%, -5%); }
 
-/* Bungkusan Konten Teks */
 .hero-content {
-    position: relative;
-    z-index: 2; /* Harus di atas Robot 3D */
-    width: 100%;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    padding-top: 130px; /* Jarak dari bawah header */
-    padding-bottom: 4rem; /* Jarak dari bawah layar */
-    pointer-events: none; /* Klik tembus ke 3D */
+    position: relative; width: 100%; height: 100%; display: flex; flex-direction: column;
+    justify-content: space-between; padding-top: 130px; padding-bottom: 4rem; pointer-events: none; 
 }
 
-/* =========================================
-   4. TULISAN BESAR (TRUE FOCUS CSS)
-   ========================================= */
+/* === 4. TULISAN BESAR (DI BELAKANG ROBOT) === */
 .title-wrapper {
-    text-align: center;
-    pointer-events: auto; 
+    position: relative;
+    z-index: 2; /* LEBIH KECIL DARI 5, Jadi tulisannya tenggelam ke belakang robot */
+    text-align: center; pointer-events: auto; 
 }
-.badge { 
-    color: var(--accent-color); text-transform: uppercase; letter-spacing: 5px; font-size: 0.9rem; margin-bottom: 1rem; 
-}
-
-.true-focus-container { 
-    font-size: 7rem; /* Dibuat besar mirip Monolith */
-    font-weight: 800; 
-    line-height: 1; 
-    display: flex; 
-    justify-content: center; 
-    gap: 20px; 
-    flex-wrap: wrap; 
-}
-
-.focus-word { 
-    transition: filter 0.4s ease, color 0.4s ease, text-shadow 0.4s ease; 
-    filter: blur(10px); 
-    cursor: pointer;
-}
+.badge { color: var(--accent-color); text-transform: uppercase; letter-spacing: 5px; font-size: 0.9rem; margin-bottom: 1rem; }
+.true-focus-container { font-size: 7rem; font-weight: 800; line-height: 1; display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; }
+.focus-word { transition: filter 0.4s ease, color 0.4s ease, text-shadow 0.4s ease; filter: blur(10px); cursor: pointer;}
 .text-white { color: rgba(255, 255, 255, 0.3); } 
 .text-purple { color: rgba(168, 85, 247, 0.3); }
 
-/* Hover & Active States */
-.focus-word.text-white.active, .focus-word.text-white:hover { 
-    filter: blur(0px); color: #ffffff; text-shadow: 0 0 20px rgba(255, 255, 255, 0.6); 
-}
-.focus-word.text-purple.active, .focus-word.text-purple:hover { 
-    filter: blur(0px); color: var(--accent-color); text-shadow: 0 0 20px rgba(168, 85, 247, 0.6); 
-}
+.focus-word.text-white.active, .focus-word.text-white:hover { filter: blur(0px); color: #ffffff; text-shadow: 0 0 20px rgba(255, 255, 255, 0.6); }
+.focus-word.text-purple.active, .focus-word.text-purple:hover { filter: blur(0px); color: var(--accent-color); text-shadow: 0 0 20px rgba(168, 85, 247, 0.6); }
 
-/* =========================================
-   5. INFO BOX (KIRI & KANAN BAWAH)
-   ========================================= */
+/* === 5. INFO BOX (DI DEPAN ROBOT) === */
 .info-wrapper {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-end;
-    width: 100%;
-    pointer-events: none; /* Klik tembus ke 3D */
+    position: relative;
+    z-index: 10; /* LEBIH BESAR DARI 5, Jadi kotaknya aman di depan robot */
+    display: flex; justify-content: space-between; align-items: flex-end; width: 100%; pointer-events: none; 
 }
-
-/* Desain Kotak Glassmorphism */
 .info-left, .info-right {
-    pointer-events: auto; /* Box bisa diklik/disorot */
-    background: rgba(3, 0, 8, 0.3); 
-    -webkit-backdrop-filter: blur(10px);
-    backdrop-filter: blur(10px);
-    padding: 1.5rem 2rem;
-    border-radius: 20px;
-    border: 1px solid rgba(255,255,255,0.08);
+    pointer-events: auto; background: rgba(3, 0, 8, 0.3); 
+    -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px);
+    padding: 1.5rem 2rem; border-radius: 20px; border: 1px solid rgba(255,255,255,0.08);
 }
 .info-item { margin-bottom: 1.2rem; }
 .info-item:last-child { margin-bottom: 0; }
-.info-item span { 
-    display: block; color: var(--text-secondary); font-size: 0.75rem; text-transform: uppercase; margin-bottom: 0.3rem; letter-spacing: 1px; 
-}
-.info-item p { 
-    font-weight: 600; font-size: 1.1rem; color: #fff; 
-}
+.info-item span { display: block; color: var(--text-secondary); font-size: 0.75rem; text-transform: uppercase; margin-bottom: 0.3rem; letter-spacing: 1px; }
+.info-item p { font-weight: 600; font-size: 1.1rem; color: #fff; }
+.info-item p.npm-text { color: #ffffff; /* DIUBAH KE PUTIH SESUAI REQUEST */ }
 .text-right { text-align: right; }
 
 .hero-btns { margin-top: 2rem; }
-.btn-primary { 
-    padding: 1rem 2.5rem; background-color: var(--text-primary); color: var(--bg-color); text-decoration: none; border-radius: 50px; font-weight: 700; transition: 0.3s; display: inline-block;
-}
-.btn-primary:hover { 
-    background-color: var(--accent-color); color: white; box-shadow: 0 0 20px rgba(168, 85, 247, 0.5); 
-}
+.btn-primary { padding: 1rem 2.5rem; background-color: var(--text-primary); color: var(--bg-color); text-decoration: none; border-radius: 50px; font-weight: 700; transition: 0.3s; display: inline-block;}
+.btn-primary:hover { background-color: var(--accent-color); color: white; box-shadow: 0 0 20px rgba(168, 85, 247, 0.5); }
 
-/* =========================================
-   6. CUSTOM ANIMATED CURSOR
-   ========================================= */
+/* === 6. CUSTOM ANIMATED CURSOR === */
 .custom-cursor-dot {
     width: 6px; height: 6px; background-color: white; border-radius: 50%;
     position: fixed; top: 0; left: 0; pointer-events: none; z-index: 9999;
@@ -212,10 +115,290 @@ nav {
 .custom-cursor-outline {
     width: 40px; height: 40px; border: 2px solid rgba(168, 85, 247, 0.8); border-radius: 50%;
     position: fixed; top: 0; left: 0; pointer-events: none; z-index: 9998;
-    transform: translate(-50%, -50%); transition: width 0.2s, height 0.2s, background-color 0.2s;
-    /* Efek transisi smooth saat mouse bergerak lambat */
-    transition-timing-function: ease-out;
+    transform: translate(-50%, -50%); transition: width 0.2s, height 0.2s, background-color 0.2s; transition-timing-function: ease-out;
 }
-.custom-cursor-outline.hovered {
-    width: 60px; height: 60px; background-color: rgba(168, 85, 247, 0.1); border-color: transparent;
+.custom-cursor-outline.hovered { width: 60px; height: 60px; background-color: rgba(168, 85, 247, 0.1); border-color: transparent; }
+
+/* =========================================
+   7. GRID LAPORAN & HOVER ANIMATION
+   ========================================= */
+.laporan-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* Membuat 3 kolom sejajar */
+    gap: 2.5rem;
 }
+
+.laporan-card {
+    background: rgba(16, 16, 16, 0.6);
+    border: 1px solid rgba(255,255,255,0.05);
+    border-radius: 20px;
+    overflow: hidden;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); /* Animasi memantul (bouncy) */
+    position: relative;
+    cursor: none; /* Memastikan kursor custom yang terbaca */
+}
+
+/* Efek Bouncy (Memantul) saat kartu di-hover */
+.laporan-card:hover {
+    transform: translateY(-15px) scale(1.02);
+    border-color: var(--accent-color);
+    box-shadow: 0 15px 30px rgba(168, 85, 247, 0.2);
+}
+
+.card-image-wrapper {
+    position: relative;
+    width: 100%;
+    height: 420px;
+    overflow: hidden;
+}
+
+.card-image-wrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    object-position: top center;
+    transition: transform 0.5s ease;
+}
+
+.laporan-card:hover .card-image-wrapper img {
+    transform: scale(1.1); /* Zoom gambar sedikit saat hover */
+}
+
+/* Layer ungu yang muncul dari bawah saat di-hover */
+.card-overlay {
+    position: absolute;
+    bottom: -100%;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to top, rgba(168, 85, 247, 0.9), transparent);
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    padding-bottom: 2rem;
+    transition: bottom 0.4s ease;
+}
+
+.laporan-card:hover .card-overlay {
+    bottom: 0;
+}
+
+.card-overlay span {
+    color: white;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+
+.card-info {
+    padding: 1.5rem;
+}
+.card-info h3 { color: #fff; margin-bottom: 0.5rem; }
+.card-info p { color: var(--text-secondary); font-size: 0.9rem; }
+
+/* =========================================
+   8. MODAL SPLIT VIEW (Pop-up 2 Layar)
+   ========================================= */
+.modal-overlay {
+    position: fixed;
+    top: 0; left: 0; width: 100vw; height: 100vh;
+    background: rgba(0, 0, 0, 0.85);
+    -webkit-backdrop-filter: blur(15px);
+    backdrop-filter: blur(15px);
+    z-index: 999999; /* Paling depan */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    pointer-events: none; /* Tidak bisa diklik saat tertutup */
+    transition: opacity 0.4s ease;
+}
+
+/* Class saat modal aktif (terbuka) */
+.modal-overlay.active {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.modal-content {
+    background: #0a0a0a;
+    width: 95vw;
+    height: 90vh;
+    border-radius: 20px;
+    border: 1px solid rgba(168, 85, 247, 0.3);
+    padding: 2rem;
+    position: relative;
+    transform: scale(0.9); /* Mulai dari kecil */
+    transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.modal-overlay.active .modal-content {
+    transform: scale(1); /* Membesar saat aktif */
+}
+
+/* Tombol X (Tutup) */
+.close-modal {
+    position: absolute;
+    top: 15px; right: 25px;
+    background: none; border: none;
+    color: white; font-size: 2.5rem;
+    transition: color 0.3s;
+    cursor: pointer;
+}
+.close-modal:hover { color: var(--accent-color); }
+
+.modal-split {
+    display: flex;
+    gap: 2rem;
+    height: calc(100% - 3rem); /* Sisa tinggi layar untuk PDF dan Video */
+}
+
+.split-left, .split-right {
+    flex: 1; /* Dibagi rata 50:50 */
+    background: #161616;
+    border-radius: 15px;
+    overflow: hidden;
+    position: relative;
+}
+
+/* Memastikan iframe memenuhi kotak */
+.split-left iframe, .split-right iframe {
+    width: 100%;
+    height: 100%;
+}
+
+/* =========================================
+   9. CONTACT SECTION & FOOTER
+   ========================================= */
+.contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* Membagi dua layar sama besar */
+    gap: 3rem;
+}
+
+.contact-info-box, .contact-form-box {
+    background: rgba(16, 16, 16, 0.4);
+    border: 1px solid rgba(255,255,255,0.05);
+    border-radius: 20px;
+    padding: 3rem;
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+}
+
+.info-item-flex {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+    transition: transform 0.3s ease;
+}
+.info-item-flex:hover {
+    transform: translateX(10px); /* Efek geser kanan saat di-hover */
+}
+
+.icon-circle {
+    width: 50px;
+    height: 50px;
+    background: rgba(168, 85, 247, 0.1);
+    border: 1px solid rgba(168, 85, 247, 0.3);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+}
+
+.info-item-flex h4 { color: #fff; font-size: 1.1rem; margin-bottom: 0.2rem; }
+.info-item-flex p { color: var(--text-secondary); }
+
+.availability-box {
+    background: rgba(168, 85, 247, 0.05);
+    border-left: 4px solid var(--accent-color);
+    padding: 1.5rem;
+    border-radius: 0 10px 10px 0;
+    margin-top: 3rem;
+}
+.availability-box h4 { color: #fff; margin-bottom: 0.5rem; }
+.availability-box p { color: var(--text-secondary); line-height: 1.6; font-size: 0.95rem; }
+
+/* Desain Form */
+.contact-form .input-group {
+    margin-bottom: 1.5rem;
+}
+
+.contact-form label {
+    display: block;
+    color: #fff;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    font-size: 0.95rem;
+}
+
+.contact-form input, .contact-form textarea {
+    width: 100%;
+    background: rgba(0, 0, 0, 0.3);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 10px;
+    padding: 1rem 1.2rem;
+    color: #fff;
+    font-family: var(--font-main);
+    font-size: 1rem;
+    transition: all 0.3s ease;
+}
+
+.contact-form input:focus, .contact-form textarea:focus {
+    outline: none;
+    border-color: var(--accent-color);
+    box-shadow: 0 0 15px rgba(168, 85, 247, 0.2);
+    background: rgba(0, 0, 0, 0.5);
+}
+
+.btn-submit {
+    width: 100%;
+    padding: 1.2rem;
+    background: linear-gradient(135deg, #A855F7, #5227ff);
+    color: white;
+    border: none;
+    border-radius: 10px;
+    font-size: 1.1rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.btn-submit:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(168, 85, 247, 0.4);
+}
+
+/* =========================================
+   10. SCROLL REVEAL ANIMATIONS
+   ========================================= */
+
+/* Efek Muncul dari Bawah (Untuk Card Laporan) */
+.reveal-fade-up {
+    opacity: 0;
+    transform: translateY(80px); /* Turun ke bawah dulu */
+    transition: all 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+/* Efek Membesar dari Kecil (Untuk Kotak Kontak) */
+.reveal-scale-up {
+    opacity: 0;
+    transform: scale(0.85); /* Mengecil dulu */
+    transition: all 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+/* Kelas 'active' ini akan ditambahkan otomatis oleh JavaScript saat di-scroll */
+.reveal-fade-up.active,
+.reveal-scale-up.active {
+    opacity: 1;
+    transform: translateY(0) scale(1); /* Kembali ke ukuran dan posisi asli */
+}
+
+/* Memberikan jeda (delay) agar card laporan muncul bergantian secara estetik */
+.laporan-grid .laporan-card:nth-child(1) { transition-delay: 0.1s; }
+.laporan-grid .laporan-card:nth-child(2) { transition-delay: 0.2s; }
+.laporan-grid .laporan-card:nth-child(3) { transition-delay: 0.3s; }
+.laporan-grid .laporan-card:nth-child(4) { transition-delay: 0.4s; }
+.laporan-grid .laporan-card:nth-child(5) { transition-delay: 0.5s; }

@@ -1,0 +1,98 @@
+/* =========================================
+   EFEK SCROLL KACA (PARALLAX GLASS)
+   ========================================= */
+.glass-scroll-wrapper {
+    position: relative;
+    width: 100%;
+    background-color: transparent;
+    padding-bottom: 10rem;
+}
+
+/* Wadah untuk menahan kaca di tengah layar */
+.sticky-glass-container {
+    position: sticky;
+    top: 50%;
+    transform: translateY(-50%);
+    height: 0; /* Dibuat 0 agar tidak mendorong elemen lain ke bawah */
+    z-index: 20;
+    display: flex;
+    justify-content: center;
+    pointer-events: none; /* Agar scroll mouse tidak terhalang kaca */
+}
+
+/* Desain Kaca Kapsul (Pill) */
+.glass-pill {
+    width: 350px;
+    height: 120px;
+    border-radius: 60px; /* Membuat bentuk kapsul bulat */
+    background: rgba(255, 255, 255, 0.05); /* Kaca transparan */
+    
+    /* Efek Kaca Memburamkan Latar Belakang */
+    -webkit-backdrop-filter: blur(16px) saturate(180%);
+    backdrop-filter: blur(16px) saturate(180%);
+    
+    /* Pantulan cahaya di pinggir kaca */
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 
+        0 30px 60px rgba(0, 0, 0, 0.4),
+        inset 0 1px 0 rgba(255, 255, 255, 0.4),
+        inset 0 -1px 0 rgba(255, 255, 255, 0.1);
+}
+
+/* Area konten yang bisa di-scroll */
+.glass-content-area {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15vh; /* Jarak antar gambar */
+    padding-top: 15vh;
+    padding-bottom: 15vh;
+}
+
+/* Desain setiap blok/panel gambar */
+.glass-panel {
+    position: relative;
+    width: 700px;
+    max-width: 90vw;
+    height: 450px;
+    border-radius: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    overflow: hidden;
+}
+
+/* Teks awal "Try scrolling." */
+.glass-panel.text-panel h2 {
+    font-size: 3.5rem;
+    color: #4a4a4a; /* Warna redup */
+    font-weight: 800;
+    letter-spacing: -1px;
+}
+
+/* Gambar di dalam panel */
+.glass-panel.image-panel img {
+    position: absolute;
+    top: 0; left: 0; 
+    width: 100%; height: 100%;
+    object-fit: cover;
+    filter: grayscale(40%) brightness(0.8); /* Dibuat sedikit gelap & estetik */
+    z-index: 1;
+    transition: transform 0.5s ease;
+}
+
+.glass-panel.image-panel:hover img {
+    transform: scale(1.05);
+}
+
+/* Teks di atas gambar */
+.glass-panel.image-panel h2 {
+    position: relative;
+    z-index: 2;
+    font-size: 4.5rem;
+    color: #ffffff;
+    font-weight: 800;
+    text-shadow: 0 10px 30px rgba(0,0,0,0.8); /* Bayangan agar teks terbaca */
+    line-height: 1.1;
+}
