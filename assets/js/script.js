@@ -79,8 +79,8 @@ document.addEventListener("DOMContentLoaded", function() {
             modalTitle.textContent = title;
             
             // JURUS ANTI-CACHE: Menambahkan waktu saat ini agar browser selalu memuat ulang PDF (Tidak pakai memori lama)
-            const noCacheUrl = pdfSrc + "?t=" + new Date().getTime();
-            modalPdf.src = noCacheUrl;
+            // Mengambil file PDF dan menyembunyikan Toolbar/Menu bawaan browser
+            modalPdf.src = pdfSrc + "#toolbar=0&navpanes=0&scrollbar=0";
             
             modalVideo.src = videoSrc;
 
