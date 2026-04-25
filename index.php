@@ -106,7 +106,8 @@
     { image: 'assets/content/img/Prak.%20Modul%202.png', text: 'Modul 2' },
     { image: 'assets/content/img/Prak.%20Modul%203.jpg', text: 'Modul 3' },
     { image: 'assets/content/img/Prak.%20Modul%204.png', text: 'Modul 4' },
-    { image: 'assets/content/img/Prak.%20Modul%205.png', text: 'Modul 5' }
+    { image: 'assets/content/img/Prak.%20Modul%205.png', text: 'Modul 5' },
+    { image: 'assets/content/img/Prak.%20Modul%206.png', text: 'Modul 6' }
 ];
         
         // 2. Masukkan daftar gambar tersebut ke dalam inisialisasi galeri
@@ -171,7 +172,8 @@
             { image: 'assets/content/img/cover-2.png.png', text: 'Modul 2' },
             { image: 'assets/content/img/cover-3.png.png', text: 'Modul 3' },
             { image: 'assets/content/img/cover-4.png.png', text: 'Modul 4' },
-            { image: 'assets/content/img/cover-5.png.png', text: 'Modul 5' }
+            { image: 'assets/content/img/cover-5.png.png', text: 'Modul 5' },
+            { image: 'assets/content/img/cover-6.png.png', text: 'Modul 6' }
         ];
         
         initCircularGallery('#circular-gallery', {

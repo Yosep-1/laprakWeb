@@ -73,6 +73,20 @@
             </div>
         </div>
 
+        <div class="laporan-card cursor-target reveal-fade-up" 
+             data-title="Praktikum 6 - Belajar Website dari Nol [Layout 2]" 
+             data-pdf="assets/content/pdf/LAPORAN_PRAKTIKUM_6.pdf" 
+             data-video="https://www.youtube.com/embed/CONCtG5f-O8">
+            <div class="card-image-wrapper">
+                <img src="assets/content/img/cover-6.png.png" alt="Cover Modul 6">
+                <div class="card-overlay"><span>Buka Split View</span></div>
+            </div>
+            <div class="card-info">
+                <h3>Praktikum 6</h3>
+                <p>Belajar Website dari Nol [Layout 2]</p>
+            </div>
+        </div>
+
     </div>
 </section>
 
