@@ -402,3 +402,4 @@ nav { display: flex; justify-content: space-between; align-items: center; }
 .laporan-grid .laporan-card:nth-child(3) { transition-delay: 0.3s; }
 .laporan-grid .laporan-card:nth-child(4) { transition-delay: 0.4s; }
 .laporan-grid .laporan-card:nth-child(5) { transition-delay: 0.5s; }
+.laporan-grid .laporan-card:nth-child(6) { transition-delay: 0.6s; }
