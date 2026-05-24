@@ -90,7 +90,7 @@
         <div class="laporan-card cursor-target reveal-fade-up" 
              data-title="Praktikum 9 - Belajar Website dari Nol [JavaScript]" 
              data-pdf="assets/content/pdf/LAPORAN_PRAKTIKUM_9.pdf" 
-             data-video="https://youtu.be/X1TOyw2AFJY?si=dNaR6xLWr__UH8a3">
+             data-video="https://youtu.be/X1TOyw2AFJY?si=CSEA6yYdYAumFc1M">
             <div class="card-image-wrapper">
                 <img src="assets/content/img/cover-9.png.png" alt="Cover Modul 6">
                 <div class="card-overlay"><span>Buka Split View</span></div>
@@ -104,7 +104,7 @@
         <div class="laporan-card cursor-target reveal-fade-up" 
              data-title="Praktikum 10 - Belajar Website dari Nol [JavaScript - ARRAY/Larik]" 
              data-pdf="assets/content/pdf/LAPORAN_PRAKTIKUM_10.pdf" 
-             data-video=" https://youtu.be/NBkA0GT4Jq8">
+             data-video=" https://youtu.be/NBkA0GT4Jq8?si=URTcfU16I1jfV-7e">
             <div class="card-image-wrapper">
                 <img src="assets/content/img/cover-10.png.png" alt="Cover Modul 6">
                 <div class="card-overlay"><span>Buka Split View</span></div>
