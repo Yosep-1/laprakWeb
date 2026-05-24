@@ -101,6 +101,20 @@
             </div>
         </div>
 
+        <div class="laporan-card cursor-target reveal-fade-up" 
+             data-title="Praktikum 10 - Belajar Website dari Nol [JavaScript - ARRAY/Larik]" 
+             data-pdf="assets/content/pdf/LAPORAN_PRAKTIKUM_10.pdf" 
+             data-video=" https://youtu.be/NBkA0GT4Jq8">
+            <div class="card-image-wrapper">
+                <img src="assets/content/img/cover-10.png.png" alt="Cover Modul 6">
+                <div class="card-overlay"><span>Buka Split View</span></div>
+            </div>
+            <div class="card-info">
+                <h3>Praktikum 10</h3>
+                <p>Belajar Website dari Nol [JavaScript - ARRAY/Larik]</p>
+            </div>
+        </div>
+
     </div>
 </section>
 
