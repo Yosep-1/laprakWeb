@@ -19,12 +19,15 @@ Sebuah platform arsip digital interaktif untuk mendokumentasikan laporan praktik
 
 ## 👨‍💻 Informasi Pengembang
 
-- **Nama:** Yosep Dominicke Telaumbanua
-- **NPM:** 240840039
-- **Semester:** 4
+- **Nama:** Dominic Telaumbanua
 - **Program Studi:** Teknik Informatika
-- **Universitas:** Universitas Katolik Santo Thomas
 - **Mata Kuliah:** Praktikum Pemrograman Web
 
+## 💻 Hasil ![laprakWeb](fotoReadme.png)
+
+## 📝 Note : 
+1. Pada website ini dikarenakan untuk digunakan sebagai tempat pemeliharaan *Laporan Praktikum* sehingga memiliki tempat dalam mencatat hasil laporan .
+
+2. Pada website ini , laporan yang diberikan dapat berupa *word/document* atau *pdf* dan dapat disertai dengan video dari *local* atau pun mealalui *youtube/upload video*.
 ---
 *Dibuat dengan dedikasi untuk eksplorasi desain web modern.* 💻✨
