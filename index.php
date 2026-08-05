@@ -100,7 +100,7 @@
     <script type="module">
         import { initCircularGallery } from './assets/js/circular-gallery.js';
         
-        // 1. Definisikan daftar gambar modul Anda di sini
+        // 1. Definisikan daftar gambar modul 
         const daftarModul = [
     { image: 'assets/content/img/Prak.%20Modul%201.png', text: 'Modul 1' },
     { image: 'assets/content/img/Prak.%20Modul%202.png', text: 'Modul 2' },
@@ -113,7 +113,7 @@
         
         // 2. Masukkan daftar gambar tersebut ke dalam inisialisasi galeri
         initCircularGallery('#circular-gallery', {
-            items: daftarModul, // Menyisipkan gambar lokal Anda
+            items: daftarModul, // Menyisipkan gambar lokal 
             bend: -2,
             textColor: "#ffffff",
             borderRadius: 0.06,
