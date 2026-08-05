@@ -127,8 +127,6 @@ class Media {
     });
     
     const img = new Image();
-    // DI SINI PERBAIKANNYA: crossOrigin dimatikan agar bisa baca gambar lokal
-    // img.crossOrigin = 'anonymous'; 
     
     img.src = this.image;
     img.onload = () => {
