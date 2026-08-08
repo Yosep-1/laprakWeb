@@ -1,4 +1,4 @@
-# 🚀 LaprakWeb - Arsip Digital Laporan Praktikum
+# 🚀 LaprakWeb (Laporan Praktikum Website) - Arsip Digital Laporan Praktikum
 
 Sebuah platform arsip digital interaktif untuk mendokumentasikan laporan praktikum Pemrograman Web. Website ini dirancang dengan pendekatan *Brutalist Minimalism* yang menggabungkan elemen 3D interaktif dan desain UI/UX modern.
 
