@@ -20,7 +20,7 @@ Sebuah platform arsip digital interaktif untuk mendokumentasikan laporan praktik
 ## 👨‍💻 Informasi Pengembang
 
 - **Nama:** Dominic Telaumbanua
-- **Program Studi:** Teknik Informatika
+- **Program Studi:** Teknik Informatika - TI 🌐
 - **Mata Kuliah:** Praktikum Pemrograman Web
 
 ## 💻 Hasil ![laprakWeb](fotoReadme.png)
